@@ -1,0 +1,19 @@
+{
+	"version": "1.0.0-*",
+
+	"dependencies": {
+		"AzureRepositories": "1.0.0",
+		"Core": "1.0.0",
+		"NETStandard.Library": "1.6.0",
+		"RestSharp.NetCore": "105.2.3"
+	},
+
+	"frameworks": {
+		"netcoreapp1.0": {
+			"imports": [
+				"dotnet5.6",
+				"portable-net45+win8"
+			]
+		}
+	}
+}

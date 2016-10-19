@@ -28,8 +28,10 @@ namespace AzureRepositories
 
 		public static void RegisterAzureStorages(this IServiceCollection services, IBaseSettings settings)
 		{
-
-		}
+            services.AddSingleton<ICoinRepository>((provider => new CoinRepository(
+               new AzureTableStorage<CoinEntity>(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + Constants.CoinTable,
+                   provider.GetService<ILog>()))));
+        }
 
 		public static void RegisterAzureQueues(this IServiceCollection services, IBaseSettings settings)
 		{

@@ -8,7 +8,15 @@ namespace Core.Utils
 {
 	public static class DictionaryExtensions
 	{
-		public static T Get<T>(this Dictionary<string, string> parameters, string key)
+	    public static T GetDefault<T>(this Dictionary<string, string> parameters, string key)
+	    {
+	        if (!parameters.ContainsKey(key))
+	            return default(T);
+            var value = parameters[key];
+            return (T)Convert.ChangeType(value, typeof(T));
+        }
+
+	    public static T Get<T>(this Dictionary<string, string> parameters, string key)
 		{
 			if (!parameters.ContainsKey(key))
 				throw new KeyNotFoundException("Key=" + key);

@@ -2,6 +2,9 @@
 {
 	public class Constants
 	{
+	    public const string EthereumBlockchain = "ethereum";
+	    public const string BitcoinBlockchain = "bitcoin";
+
 		/// <summary>
 		/// Used to change table and queue names in testing enviroment
 		/// </summary>
@@ -21,7 +24,6 @@
 		/// </summary>
 		public const string RouterIncomeQueue = "router-income-queue";
 
-	
-
-	}
+        public const string CoinTable = "CoinTable";
+    }
 }

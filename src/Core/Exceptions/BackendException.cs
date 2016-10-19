@@ -6,7 +6,8 @@ namespace Core.Exceptions
 	{
 		None = 0,
 		ContractPoolEmpty = 1,
-		MissingRequiredParams = 2
+		MissingRequiredParams = 2,
+	    InvalidBlockchain = 3
 	}
 
 	public class BackendException : Exception

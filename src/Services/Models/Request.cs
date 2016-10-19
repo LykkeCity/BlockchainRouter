@@ -7,8 +7,6 @@ namespace Services.Models
 {
     public class Request
     {
-		public string Blockchain { get; set; }
-
 		public ActionType Action { get; set; }
 
 		public Dictionary<string, string> Parameters { get; set; }
@@ -23,7 +21,4 @@ namespace Services.Models
 		Transfer = 4,
 		TransferAllAssetsToAddress = 5
 	}
-
-
-
 }

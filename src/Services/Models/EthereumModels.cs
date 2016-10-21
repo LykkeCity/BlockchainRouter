@@ -6,18 +6,18 @@ using Core.Utils;
 
 namespace Services.Models
 {
-	public class BaseIncomingRequest
+	public class BaseEthRequest
 	{
-		public Guid TransactionId { get; set; }
+		public string TransactionId { get; set; }
 
 		public virtual void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
-			TransactionId = requestParameters.Get(() => TransactionId);
+			TransactionId = requestParameters.Get<string>(CommandsKeys.TransactionId);
 		}
 	}
 
 
-	public class IncomingCashInRequest : BaseIncomingRequest
+	public class EthCashInRequest : BaseEthRequest
 	{
 
 		public string Coin { get; set; }
@@ -28,13 +28,13 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			Coin = requestParameters.Get(() => Coin);
-			To = requestParameters.Get(() => To);
-			Amount = requestParameters.Get(() => Amount);
+			Coin = requestParameters.Get<string>(CommandsKeys.Asset);
+			To = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			Amount = requestParameters.Get<decimal>(CommandsKeys.Amount);
 		}
 	}
 
-	public class IncomingCashOutRequest : BaseIncomingRequest
+	public class EthCashOutRequest : BaseEthRequest
 	{
 
 		public string Coin { get; set; }
@@ -42,7 +42,7 @@ namespace Services.Models
 		public string Client { get; set; }
 
 		public string To { get; set; }
-
+		
 		public decimal Amount { get; set; }
 
 		public string Sign { get; set; }
@@ -50,16 +50,16 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			Coin = requestParameters.Get(() => Coin);
-			Client = requestParameters.Get(() => Client);
-			To = requestParameters.Get(() => To);
-			Amount = requestParameters.Get(() => Amount);
-			Sign = requestParameters.Get(() => Sign);
+			Coin = requestParameters.Get<string>(CommandsKeys.Asset);
+			Client = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			To = requestParameters.Get<string>(CommandsKeys.To);
+			Amount = requestParameters.Get<decimal>(CommandsKeys.Amount);
+			//Sign = requestParameters.Get(() => Sign);
 		}
 	}
 
-	public class IncomingSwapRequest : BaseIncomingRequest
-	{		
+	public class EthSwapRequest : BaseEthRequest
+	{
 		public string ClientA { get; set; }
 
 		public string ClientB { get; set; }
@@ -77,14 +77,37 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			ClientA = requestParameters.Get(() => ClientA);
-			ClientB = requestParameters.Get(() => ClientB);
-			CoinA = requestParameters.Get(() => CoinA);
-			CoinB = requestParameters.Get(() => CoinB);
-			AmountA = requestParameters.Get(() => AmountA);
-			AmountB = requestParameters.Get(() => AmountB);
-			SignA = requestParameters.Get(() => SignA);
-			SignB = requestParameters.Get(() => SignB);
+			ClientA = requestParameters.Get<string>(CommandsKeys.MultisigAddress1);
+			ClientB = requestParameters.Get<string>(CommandsKeys.MultisigAddress2);
+			CoinA = requestParameters.Get<string>(CommandsKeys.Asset1);
+			CoinB = requestParameters.Get<string>(CommandsKeys.Asset2);
+			AmountA = requestParameters.Get<decimal>(CommandsKeys.Amount1);
+			AmountB = requestParameters.Get<decimal>(CommandsKeys.Amount2);
+			//SignA = requestParameters.Get(() => SignA);
+			//SignB = requestParameters.Get(() => SignB);
+		}
+	}
+
+	public class EthTransferRequest : BaseEthRequest
+	{
+
+		public string Coin { get; set; }
+
+		public string From { get; set; }
+
+		public string To { get; set; }
+
+		public decimal Amount { get; set; }
+
+		public string Sign { get; set; }
+
+		public override void InitFromParameters(Dictionary<string, string> requestParameters)
+		{
+			base.InitFromParameters(requestParameters);
+			Coin = requestParameters.Get<string>(CommandsKeys.Asset);
+			From = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			To = requestParameters.Get<string>(CommandsKeys.To);
+			Amount = requestParameters.Get<decimal>(CommandsKeys.Amount);
 		}
 	}
 

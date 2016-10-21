@@ -12,7 +12,7 @@ namespace Services.Models
 
 		public virtual void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
-			TransactionId = requestParameters.Get(() => TransactionId);
+			TransactionId = requestParameters.Get<string>(CommandsKeys.TransactionId);
 		}
 	}
 
@@ -25,9 +25,9 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			MultisigAddress = requestParameters.Get(() => MultisigAddress);
-			Amount = requestParameters.Get(() => Amount);
-			Currency = requestParameters.Get(() => Currency);
+			MultisigAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
+			Currency = requestParameters.Get<string>(CommandsKeys.Asset);
 		}
 	}
 
@@ -41,10 +41,10 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			MultisigAddress = requestParameters.Get(() => MultisigAddress);
-			Amount = requestParameters.Get(() => Amount);
-			Currency = requestParameters.Get(() => Currency);
-			PrivateKey = requestParameters.Get(() => PrivateKey);
+			MultisigAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
+			Currency = requestParameters.Get<string>(CommandsKeys.Asset);
+			//PrivateKey = requestParameters.Get(() => PrivateKey);
 		}
 	}
 
@@ -60,11 +60,11 @@ namespace Services.Models
 		{
 			base.InitFromParameters(requestParameters);
 
-			MultisigAddress = requestParameters.Get(() => MultisigAddress);
-			Amount = requestParameters.Get(() => Amount);
-			Currency = requestParameters.Get(() => Currency);
-			PrivateKey = requestParameters.Get(() => PrivateKey);
-			PublicWallet = requestParameters.Get(() => PublicWallet);
+			MultisigAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
+			Currency = requestParameters.Get<string>(CommandsKeys.Asset);
+			//PrivateKey = requestParameters.Get(() => PrivateKey);
+			PublicWallet = requestParameters.Get<string>(CommandsKeys.To);
 		}
 	}
 
@@ -78,11 +78,11 @@ namespace Services.Models
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			SourceAddress = requestParameters.Get(() => SourceAddress);
-			SourcePrivateKey = requestParameters.Get(() => SourcePrivateKey);
-			DestinationAddress = requestParameters.Get(() => DestinationAddress);
-			Amount = requestParameters.Get(() => Amount);
-			Asset = requestParameters.Get(() => Asset);
+			SourceAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+			//SourcePrivateKey = requestParameters.Get(() => SourcePrivateKey);
+			DestinationAddress = requestParameters.Get<string>(CommandsKeys.To);
+			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
+			Asset = requestParameters.Get<string>(CommandsKeys.Asset);
 		}
 	}
 
@@ -99,27 +99,12 @@ namespace Services.Models
 		{
 			base.InitFromParameters(requestParameters);
 
-			MultisigCustomer1 = requestParameters.Get(() => MultisigCustomer1);
-			Amount1 = requestParameters.Get(() => Amount1);
-			Asset1 = requestParameters.Get(() => Asset1);
-			MultisigCustomer2 = requestParameters.Get(() => MultisigCustomer2);
-			Amount2 = requestParameters.Get(() => Amount2);
-			Asset2 = requestParameters.Get(() => Asset2);
+			MultisigCustomer1 = requestParameters.Get<string>(CommandsKeys.MultisigAddress1);
+			Amount1 = requestParameters.Get<float>(CommandsKeys.Amount1);
+			Asset1 = requestParameters.Get<string>(CommandsKeys.Asset1);
+			MultisigCustomer2 = requestParameters.Get<string>(CommandsKeys.MultisigAddress2);
+			Amount2 = requestParameters.Get<float>(CommandsKeys.Amount2);
+			Asset2 = requestParameters.Get<string>(CommandsKeys.Asset2);
 		}
-	}
-
-	public class TransferAll : BaseCommandModel
-	{
-		public string SourceAddress { get; set; }
-		public string SourcePrivateKey { get; set; }
-		public string DestinationAddress { get; set; }
-
-		public override void InitFromParameters(Dictionary<string, string> requestParameters)
-		{
-			base.InitFromParameters(requestParameters);
-			SourceAddress = requestParameters.Get(() => SourceAddress);
-			SourcePrivateKey = requestParameters.Get(() => SourcePrivateKey);
-			DestinationAddress = requestParameters.Get(() => DestinationAddress);
-		}
-	}
+	}	
 }

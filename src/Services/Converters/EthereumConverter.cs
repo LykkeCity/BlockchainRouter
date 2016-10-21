@@ -11,23 +11,26 @@ namespace Services.Converters
 	{
 		public string CreateMessage(Request request)
 		{
-			BaseIncomingRequest req = null;
+			BaseEthRequest req = null;
 			switch (request.Action)
 			{
 				case ActionType.CashIn:
-					req = new IncomingCashInRequest();
+					req = new EthCashInRequest();
 					break;
 				case ActionType.CashOut:
-					req = new IncomingCashOutRequest();
+					req = new EthCashOutRequest();
 					break;
 				case ActionType.Swap:
-					req = new IncomingSwapRequest();
+					req = new EthSwapRequest();
+					break;
+				case ActionType.Transfer:
+					req = new EthTransferRequest();
 					break;
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
 			req.InitFromParameters(request.Parameters);
-			return new { Action = request.Action, JsonData = req.ToJson() }.ToJson();
+			return new { Action = request.Action.ToString(), JsonData = req.ToJson() }.ToJson();
 		}
 	}
 }

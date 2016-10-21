@@ -2645,6 +2645,25 @@
           "netcoreapp1.0/Core.dll": {}
         }
       },
+      "RoutingJob/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v1.0",
+        "dependencies": {
+          "AzureRepositories": "1.0.0",
+          "Core": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
+          "NETStandard.Library": "1.6.0",
+          "Services": "1.0.0"
+        },
+        "compile": {
+          "netcoreapp1.0/RoutingJob.dll": {}
+        },
+        "runtime": {
+          "netcoreapp1.0/RoutingJob.dll": {}
+        }
+      },
       "Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v1.0",
@@ -2659,25 +2678,6 @@
         },
         "runtime": {
           "netcoreapp1.0/Services.dll": {}
-        }
-      },
-      "TransactionHandlerJob/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v1.0",
-        "dependencies": {
-          "AzureRepositories": "1.0.0",
-          "Core": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
-          "Microsoft.Extensions.PlatformAbstractions": "1.0.0",
-          "NETStandard.Library": "1.6.0",
-          "Services": "1.0.0"
-        },
-        "compile": {
-          "netcoreapp1.0/TransactionHandlerJob.dll": {}
-        },
-        "runtime": {
-          "netcoreapp1.0/TransactionHandlerJob.dll": {}
         }
       }
     }
@@ -8059,15 +8059,15 @@
       "path": "../Core/project.json",
       "msbuildProject": "../Core/Core.xproj"
     },
+    "RoutingJob/1.0.0": {
+      "type": "project",
+      "path": "../RoutingJob/project.json",
+      "msbuildProject": "../RoutingJob/RoutingJob.xproj"
+    },
     "Services/1.0.0": {
       "type": "project",
       "path": "../Services/project.json",
       "msbuildProject": "../Services/Services.xproj"
-    },
-    "TransactionHandlerJob/1.0.0": {
-      "type": "project",
-      "path": "../TransactionHandlerJob/project.json",
-      "msbuildProject": "../TransactionHandlerJob/TransactionHandlerJob.xproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -8075,7 +8075,7 @@
       "Core >= 1.0.0",
       "Microsoft.Extensions.PlatformAbstractions >= 1.0.0",
       "Microsoft.NETCore.App >= 1.0.0",
-      "TransactionHandlerJob >= 1.0.0"
+      "RoutingJob >= 1.0.0"
     ],
     ".NETCoreApp,Version=v1.0": []
   },

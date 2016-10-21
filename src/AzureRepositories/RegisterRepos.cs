@@ -28,7 +28,11 @@ namespace AzureRepositories
 
 		public static void RegisterAzureStorages(this IServiceCollection services, IBaseSettings settings)
 		{
-            services.AddSingleton<ICoinRepository>((provider => new CoinRepository(
+			services.AddSingleton<IMonitoringRepository>(provider => new MonitoringRepository(
+			new AzureTableStorage<MonitoringEntity>(settings.Db.ExchangeQueueConnString, Constants.StoragePrefix + Constants.MonitoringTable,
+				provider.GetService<ILog>())));
+
+			services.AddSingleton<ICoinRepository>((provider => new CoinRepository(
                new AzureTableStorage<CoinEntity>(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + Constants.CoinTable,
                    provider.GetService<ILog>()))));
         }
@@ -44,6 +48,12 @@ namespace AzureRepositories
 					{
 						case Constants.EmailNotifierQueue:
 							return new AzureQueueExt(settings.Db.ExchangeQueueConnString, Constants.StoragePrefix + x);
+						case Constants.RouterIncomeQueue:
+							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+						case Constants.EthereumQueue:
+							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+						case Constants.BitcoinQueue:
+							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
 						default:
 							throw new Exception("Queue is not registered");
 					}

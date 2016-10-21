@@ -14,11 +14,10 @@ namespace Services.Models
 
 	public enum ActionType
 	{
-		CashIn = 0,
-		CashOut = 1,
-		Swap = 2,
-		OrdinaryCashOut = 3,
-		Transfer = 4,
-		TransferAllAssetsToAddress = 5
+		CashIn,
+		CashOut,
+		Swap,
+		OrdinaryCashOut,
+		Transfer	
 	}
 }

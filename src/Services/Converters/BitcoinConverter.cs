@@ -27,10 +27,7 @@ namespace Services.Converters
 					command = new OrdinaryCashOut();
 				    break;
 			    case ActionType.Transfer:
-					command= new Transfer();
-				    break;
-				case ActionType.TransferAllAssetsToAddress:
-					command = new TransferAll();
+					command= new Transfer();				    			
 				    break;
 			    default:
 				    throw new ArgumentOutOfRangeException();

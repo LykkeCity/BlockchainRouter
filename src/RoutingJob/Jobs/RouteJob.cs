@@ -5,12 +5,12 @@ using Services;
 
 namespace RoutingJob.Jobs
 {
-	public class RoutingJob : TimerPeriod
+	public class RouteJob : TimerPeriod
 	{
 		private readonly IRouteService _routeService;
 		public const int PeriodSeconds = 2;
 
-		public RoutingJob(IRouteService routeService, ILog log) : base("RoutingJob", PeriodSeconds * 1000, log)
+		public RouteJob(IRouteService routeService, ILog log) : base("RoutingJob", PeriodSeconds * 1000, log)
 		{
 			_routeService = routeService;
 		}

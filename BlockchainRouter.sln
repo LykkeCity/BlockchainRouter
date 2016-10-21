@@ -13,9 +13,9 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Services", "src\Services\Se
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runners", "Runners", "{2335DB37-82F5-4128-B954-1699FC95A86B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LykkeRunner", "src\TransactionHandlerRunner\LykkeRunner.xproj", "{9207197A-8E41-4AFF-AABD-B44058A05E5C}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LykkeRunner", "src\RouterRunner\LykkeRunner.xproj", "{9207197A-8E41-4AFF-AABD-B44058A05E5C}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoutingJob", "src\TransactionHandlerJob\RoutingJob.xproj", "{887DA68F-191B-48AA-829A-74F49BD96236}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "RoutingJob", "src\RoutingJob\RoutingJob.xproj", "{887DA68F-191B-48AA-829A-74F49BD96236}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4DCCF8DE-15AA-40CD-AAF8-D0E4AC8418D6}"
 EndProject

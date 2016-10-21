@@ -25,7 +25,7 @@ namespace Core.Utils
 		public static string ToJson(this object src, bool ignoreNulls = false)
 		{
 			return JsonConvert.SerializeObject(src,
-				new JsonSerializerSettings { NullValueHandling = ignoreNulls ? NullValueHandling.Ignore : NullValueHandling.Include });
+				new JsonSerializerSettings { NullValueHandling = ignoreNulls ? NullValueHandling.Ignore : NullValueHandling.Include,  });
 		}
 	}
 }

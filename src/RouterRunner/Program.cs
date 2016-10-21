@@ -9,14 +9,14 @@ using RoutingJob;
 
 namespace TransactionHandlerRunner
 {
-    public class Program
-    {
-	    static JobApp JobApp { get; set; }
+	public class Program
+	{
+		static JobApp JobApp { get; set; }
 
-	    public static void Main(string[] args)
+		public static void Main(string[] args)
 		{
 			Console.Clear();
-			Console.Title = "Ethereum Web Job - Ver. " + Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
+			Console.Title = "Blockchain Router Job - Ver. " + Microsoft.Extensions.PlatformAbstractions.PlatformServices.Default.Application.ApplicationVersion;
 
 			var settings = GetSettings();
 			if (settings == null)
@@ -57,10 +57,10 @@ namespace TransactionHandlerRunner
 			Console.WriteLine("Utc time: " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
 
 			Console.WriteLine("Press 'q' to quit.");
-			
+
 
 			while (Console.ReadLine() != "q") continue;
-		
+			JobApp.Stop().Wait();
 		}
 
 		static BaseSettings GetSettings()
@@ -96,9 +96,6 @@ namespace TransactionHandlerRunner
 
 		static void CheckSettings(BaseSettings settings)
 		{
-			if (string.IsNullOrWhiteSpace(settings.ApiUrl))
-				throw new Exception("ApiUrl is missing");
-
 			if (string.IsNullOrWhiteSpace(settings.Db?.DataConnString))
 				throw new Exception("DataConnString is missing");
 			if (string.IsNullOrWhiteSpace(settings.Db?.LogsConnString))
@@ -109,6 +106,6 @@ namespace TransactionHandlerRunner
 				throw new Exception("EthereumNotificationsConnString is missing");
 		}
 
-		
+
 	}
 }

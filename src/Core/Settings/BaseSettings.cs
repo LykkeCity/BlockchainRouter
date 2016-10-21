@@ -6,18 +6,12 @@ namespace Core.Settings
 {
 	public interface IBaseSettings
 	{
-		DbSettings Db { get; set; }
-		
-		int MinTransactionConfirmaionLevel { get; set; }
-		string ApiUrl { get; set; }
+		DbSettings Db { get; set; }				
 	}
 
 	public class BaseSettings : IBaseSettings
 	{
-		public DbSettings Db { get; set; }
-
-		public int MinTransactionConfirmaionLevel { get; set; } = 1;
-		public string ApiUrl { get; set; }
+		public DbSettings Db { get; set; }		
 	}
 
 	public class DbSettings

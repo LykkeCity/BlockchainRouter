@@ -25,5 +25,6 @@
 		public const string RouterIncomeQueue = "router-income-queue";
 
         public const string CoinTable = "CoinTable";
-    }
+		public const string MonitoringTable = "MonitoringTable";
+	}
 }

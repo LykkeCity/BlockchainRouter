@@ -22,5 +22,6 @@ namespace Core.Settings
 
 		public string ExchangeQueueConnString { get; set; }
 		public string EthereumNotificationsConnString { get; set; }
+		public string BitcoinConnectionString { get; set; }
 	}
 }

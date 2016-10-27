@@ -59,7 +59,7 @@ namespace Services
 			var converter = _convertersFactory(blockchain);
 			if (converter == null)
 				throw new Exception("Unregistered converter for blockchain - " + blockchain);
-			var message = converter.CreateMessage(request);
+			var message = converter.CreateCommandMessage(request);
 
 			await _logger.WriteInfo("RouteService", "ProcessNextRequest", "", "Converted message -" + message);
 

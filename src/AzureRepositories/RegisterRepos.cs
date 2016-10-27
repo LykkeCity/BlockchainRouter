@@ -50,10 +50,21 @@ namespace AzureRepositories
 							return new AzureQueueExt(settings.Db.ExchangeQueueConnString, Constants.StoragePrefix + x);
 						case Constants.RouterIncomeQueue:
 							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+
 						case Constants.EthereumQueue:
 							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
-						case Constants.BitcoinQueue:
+						case Constants.EthereumSignedRequestQueue:
 							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+
+						case Constants.BitcoinQueue:
+							return new AzureQueueExt(settings.Db.BitcoinConnectionString, Constants.StoragePrefix + x);
+						case Constants.BitcoinSignedRequestQueue:
+							return new AzureQueueExt(settings.Db.BitcoinConnectionString, Constants.StoragePrefix + x);
+
+						case Constants.RouterSignedRequestQueue:
+							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+
+						
 						default:
 							throw new Exception("Queue is not registered");
 					}

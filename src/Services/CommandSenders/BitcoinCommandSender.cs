@@ -9,16 +9,23 @@ namespace Services.CommandSenders
 {
 	public class BitcoinCommandSender : ICommandSender
 	{
-		private readonly IQueueExt _queue;
+		private readonly IQueueExt _commandQueue;
+		private IQueueExt _signedRequestQueue;
 
 		public BitcoinCommandSender(Func<string, IQueueExt> queueFactory)
 		{
-			_queue = queueFactory(Constants.BitcoinQueue);
+			_commandQueue = queueFactory(Constants.BitcoinQueue);
+			_signedRequestQueue = queueFactory(Constants.BitcoinSignedRequestQueue);
 		}
 
 		public Task SendCommandAsync(string message)
 		{
-			return _queue.PutRawMessageAsync(message);
+			return _commandQueue.PutRawMessageAsync(message);
+		}
+
+		public Task SendSignedRequestAsync(string message)
+		{
+			return _signedRequestQueue.PutRawMessageAsync(message);
 		}
 	}
 }

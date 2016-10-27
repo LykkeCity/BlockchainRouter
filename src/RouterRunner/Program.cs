@@ -104,6 +104,8 @@ namespace TransactionHandlerRunner
 				throw new Exception("ExchangeQueueConnString is missing");
 			if (string.IsNullOrWhiteSpace(settings.Db?.EthereumNotificationsConnString))
 				throw new Exception("EthereumNotificationsConnString is missing");
+			if (string.IsNullOrWhiteSpace(settings.Db?.BitcoinConnectionString))
+				throw new Exception("BitcoinConnectionString is missing");
 		}
 
 

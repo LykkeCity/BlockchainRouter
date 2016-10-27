@@ -9,7 +9,7 @@ namespace Services.Converters
 {
 	public class EthereumConverter : IRequestConverter
 	{
-		public string CreateMessage(Request request)
+		public string CreateCommandMessage(Request request)
 		{
 			BaseEthRequest req = null;
 			switch (request.Action)
@@ -31,6 +31,11 @@ namespace Services.Converters
 			}
 			req.InitFromParameters(request.Parameters);
 			return new { Action = request.Action.ToString(), JsonData = req.ToJson() }.ToJson();
+		}
+
+		public string CreateSignedRequestMessage(Guid requestId, string multisigAddress, string sign)
+		{
+			return new { RequestId = requestId, Client = multisigAddress, Signature = sign }.ToJson();
 		}
 	}
 }

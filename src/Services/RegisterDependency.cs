@@ -23,7 +23,7 @@ namespace Services
 			services.AddTransient<EthereumConverter>();
 			services.AddTransient<BitcoinCommandSender>();
 			services.AddTransient<EthereumCommandSender>();
-
+			services.AddTransient<ISignatureService, SignatureService>();
 
 			services.AddTransient<Func<string, IRequestConverter>>(provider => x =>
 			{

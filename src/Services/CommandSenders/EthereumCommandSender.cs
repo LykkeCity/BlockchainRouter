@@ -9,16 +9,23 @@ namespace Services.CommandSenders
 {
 	public class EthereumCommandSender : ICommandSender
 	{
-		private readonly IQueueExt _queue;
+		private readonly IQueueExt _commandQueue;
+		private IQueueExt _signedRequestQueue;
 
 		public EthereumCommandSender(Func<string, IQueueExt> queueFactory)
 		{
-			_queue = queueFactory(Constants.EthereumQueue);
+			_commandQueue = queueFactory(Constants.EthereumQueue);
+			_signedRequestQueue = queueFactory(Constants.EthereumSignedRequestQueue);
 		}
 
 		public Task SendCommandAsync(string message)
 		{
-			return _queue.PutRawMessageAsync(message);
+			return _commandQueue.PutRawMessageAsync(message);
+		}
+
+		public Task SendSignedRequestAsync(string message)
+		{
+			return _signedRequestQueue.PutRawMessageAsync(message);
 		}
 	}
 }

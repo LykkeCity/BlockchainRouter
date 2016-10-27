@@ -8,5 +8,6 @@ namespace Services.CommandSenders
 	public interface ICommandSender
 	{
 		Task SendCommandAsync(string message);
+		Task SendSignedRequestAsync(string message);
 	}
 }

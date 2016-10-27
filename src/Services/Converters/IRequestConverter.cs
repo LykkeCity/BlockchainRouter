@@ -8,6 +8,7 @@ namespace Services.Converters
 {
 	public interface IRequestConverter
     {
-	    string CreateMessage(Request request);
+	    string CreateCommandMessage(Request request);
+		string CreateSignedRequestMessage(Guid requestId, string multisigAddress, string sign);
     }
 }

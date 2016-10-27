@@ -24,6 +24,12 @@
 		/// </summary>
 		public const string RouterIncomeQueue = "router-income-queue";
 
+		public const string RouterSignedRequestQueue = "router-signed-request-queue";
+
+		public const string EthereumSignedRequestQueue = "ethereum-signed-request-queue";
+		public const string BitcoinSignedRequestQueue = "bitcoin-signed-request-queue";
+
+
         public const string CoinTable = "CoinTable";
 		public const string MonitoringTable = "MonitoringTable";
 	}

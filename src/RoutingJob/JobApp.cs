@@ -21,12 +21,14 @@ namespace RoutingJob
 			// start monitoring
 			Services.GetService<MonitoringJob>().Start();
 			Services.GetService<RouteJob>().Start();
+			Services.GetService<ProcessSignaturesJob>().Start();
 		}
 
 		public async Task Stop()
 		{
 			await Services.GetService<MonitoringJob>().Stop();
 			await Services.GetService<RouteJob>().Stop();
+			await Services.GetService<ProcessSignaturesJob>().Stop();
 		}
 	}
 }

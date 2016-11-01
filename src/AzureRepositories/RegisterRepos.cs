@@ -29,11 +29,11 @@ namespace AzureRepositories
 		public static void RegisterAzureStorages(this IServiceCollection services, IBaseSettings settings)
 		{
 			services.AddSingleton<IMonitoringRepository>(provider => new MonitoringRepository(
-			new AzureTableStorage<MonitoringEntity>(settings.Db.ExchangeQueueConnString, Constants.StoragePrefix + Constants.MonitoringTable,
+			new AzureTableStorage<MonitoringEntity>(settings.Db.SharedConnString, Constants.StoragePrefix + Constants.MonitoringTable,
 				provider.GetService<ILog>())));
 
 			services.AddSingleton<ICoinRepository>((provider => new CoinRepository(
-               new AzureTableStorage<CoinEntity>(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + Constants.CoinTable,
+               new AzureTableStorage<CoinEntity>(settings.Db.DictsConnString, Constants.StoragePrefix + Constants.CoinTable,
                    provider.GetService<ILog>()))));
         }
 
@@ -47,22 +47,22 @@ namespace AzureRepositories
 					switch (x)
 					{
 						case Constants.EmailNotifierQueue:
-							return new AzureQueueExt(settings.Db.ExchangeQueueConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.SharedConnString, Constants.StoragePrefix + x);
 						case Constants.RouterIncomeQueue:
-							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.SharedTransactionConnString, Constants.StoragePrefix + x);
 
 						case Constants.EthereumQueue:
-							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.EthereumHandlerConnString, Constants.StoragePrefix + x);
 						case Constants.EthereumSignedRequestQueue:
-							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.EthereumHandlerConnString, Constants.StoragePrefix + x);
 
 						case Constants.BitcoinQueue:
-							return new AzureQueueExt(settings.Db.BitcoinConnectionString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.BitcoinHandlerConnString, Constants.StoragePrefix + x);
 						case Constants.BitcoinSignedRequestQueue:
-							return new AzureQueueExt(settings.Db.BitcoinConnectionString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.BitcoinHandlerConnString, Constants.StoragePrefix + x);
 
 						case Constants.RouterSignedRequestQueue:
-							return new AzureQueueExt(settings.Db.EthereumNotificationsConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.SharedTransactionConnString, Constants.StoragePrefix + x);
 
 						
 						default:

@@ -11,24 +11,22 @@ namespace AzureRepositories.Repositories
 {
     public class CoinEntity : TableEntity, ICoin
     {
-        public const string Key = "Blockchain";
+        public const string Key = "Asset";
 
-        public string Name => RowKey;
+        public string Id => RowKey;
         public string Blockchain { get; set; }
-        public string Address { get; set; }
-        public string Multiplier { get; set; }
-        public bool Payable { get; set; }
+        public string AssetAddress { get; set; }
+        public int Multiplier { get; set; }
 
         public static CoinEntity CreateCoinEntity(ICoin coin)
         {
             return new CoinEntity
             {
-                Address = coin.Address,
-                RowKey = coin.Name,
+                AssetAddress = coin.AssetAddress,
+                RowKey = coin.Id,
                 Multiplier = coin.Multiplier,
                 Blockchain = coin.Blockchain,
-                PartitionKey = Key,
-                Payable = coin.Payable
+                PartitionKey = Key
             };
         }
     }
@@ -58,7 +56,7 @@ namespace AzureRepositories.Repositories
 
         public async Task<ICoin> GetCoinByAddress(string coinAddress)
         {
-            var coin = (await _table.GetDataAsync(CoinEntity.Key, x => x.Address == coinAddress)).FirstOrDefault();
+            var coin = (await _table.GetDataAsync(CoinEntity.Key, x => x.AssetAddress == coinAddress)).FirstOrDefault();
             if (coin == null)
                 throw new Exception("Unknown coin address - " + coinAddress);
             return coin;

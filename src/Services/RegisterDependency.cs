@@ -27,7 +27,7 @@ namespace Services
 
 			services.AddTransient<Func<string, IRequestConverter>>(provider => x =>
 			{
-				switch (x)
+				switch (x.ToLower())
 				{
 					case Constants.BitcoinBlockchain:
 						return provider.GetService<BitcoinConverter>();
@@ -40,7 +40,7 @@ namespace Services
 
 			services.AddTransient<Func<string, ICommandSender>>(provider => x =>
 			{
-				switch (x)
+				switch (x.ToLower())
 				{
 					case Constants.BitcoinBlockchain:
 						return provider.GetService<BitcoinCommandSender>();

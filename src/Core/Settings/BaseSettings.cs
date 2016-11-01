@@ -16,12 +16,14 @@ namespace Core.Settings
 
 	public class DbSettings
 	{
-		public string DataConnString { get; set; }
 		public string LogsConnString { get; set; }
 
+	    public string SharedTransactionConnString { get; set; }
+	    public string SharedConnString { get; set; }
 
-		public string ExchangeQueueConnString { get; set; }
-		public string EthereumNotificationsConnString { get; set; }
-		public string BitcoinConnectionString { get; set; }
+        public string DictsConnString { get; set; }
+
+        public string EthereumHandlerConnString { get; set; }
+		public string BitcoinHandlerConnString { get; set; }
 	}
 }

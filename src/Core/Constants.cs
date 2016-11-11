@@ -30,7 +30,7 @@
 		public const string BitcoinSignedRequestQueue = "bitcoin-signed-request-queue";
 
 
-        public const string CoinTable = "CoinTable";
+        public const string CoinTable = "Dictionaries";
 		public const string MonitoringTable = "MonitoringTable";
 	}
 }

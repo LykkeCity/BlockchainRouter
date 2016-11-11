@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Core.Settings;
 using RoutingJob;
 
-namespace TransactionHandlerRunner
+namespace RouterRunner
 {
 	public class Program
 	{

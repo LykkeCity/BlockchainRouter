@@ -47,13 +47,13 @@ namespace RouterRunner
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("cannot start jobs! Exception: " + e.Message);
+				Console.WriteLine("cannot start job! Exception: " + e.Message);
 				Console.WriteLine("Press any key to exit...");
 				Console.ReadKey();
 				return;
 			}
 
-			Console.WriteLine("Web job started");
+			Console.WriteLine("Router started");
 			Console.WriteLine("Utc time: " + DateTime.UtcNow.ToString("yyyy-MM-dd HH:mm:ss"));
 
 			Console.WriteLine("Press 'q' to quit.");

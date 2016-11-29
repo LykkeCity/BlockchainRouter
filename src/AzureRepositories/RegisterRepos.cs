@@ -29,7 +29,7 @@ namespace AzureRepositories
 		public static void RegisterAzureStorages(this IServiceCollection services, IBaseSettings settings)
 		{
 			services.AddSingleton<IMonitoringRepository>(provider => new MonitoringRepository(
-			new AzureTableStorage<MonitoringEntity>(settings.Db.SharedConnString, Constants.StoragePrefix + Constants.MonitoringTable,
+			new AzureTableStorage<MonitoringEntity>(settings.Db.SharedStorageConnString, Constants.StoragePrefix + Constants.MonitoringTable,
 				provider.GetService<ILog>())));
 
 			services.AddSingleton<ICoinRepository>((provider => new CoinRepository(
@@ -47,7 +47,7 @@ namespace AzureRepositories
 					switch (x)
 					{
 						case Constants.EmailNotifierQueue:
-							return new AzureQueueExt(settings.Db.SharedConnString, Constants.StoragePrefix + x);
+							return new AzureQueueExt(settings.Db.SharedStorageConnString, Constants.StoragePrefix + x);
 						case Constants.RouterIncomeQueue:
 							return new AzureQueueExt(settings.Db.SharedTransactionConnString, Constants.StoragePrefix + x);
 

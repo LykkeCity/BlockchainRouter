@@ -13,7 +13,7 @@
 		/// <summary>
 		/// Used to send commands to bitcoin blockchain
 		/// </summary>
-		public const string BitcoinQueue = "intransactions";
+		public const string BitcoinQueue = "bitcoin-coin-request-queue";
 
 		public const string EthereumQueue = "ethereum-coin-request-queue";
 

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Core.Settings;
+using Microsoft.Extensions.PlatformAbstractions;
 using RoutingJob;
 
 namespace RouterRunner
@@ -99,7 +100,7 @@ namespace RouterRunner
 			if (string.IsNullOrWhiteSpace(settings.Db?.LogsConnString))
 				throw new Exception("LogsConnString is missing");
 
-			if (string.IsNullOrWhiteSpace(settings.Db?.SharedConnString))
+			if (string.IsNullOrWhiteSpace(settings.Db?.SharedStorageConnString))
 				throw new Exception("SharedConnString is missing");
 
 			if (string.IsNullOrWhiteSpace(settings.Db?.SharedTransactionConnString))

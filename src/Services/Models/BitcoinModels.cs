@@ -1,8 +1,5 @@
 ﻿using Core.Utils;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Services.Models
 {
@@ -33,38 +30,18 @@ namespace Services.Models
 
 	public class CashOut : BaseCommandModel
 	{
-		public string MultisigAddress { get; set; }
-		public float Amount { get; set; }
+		public string AddressFrom { get; set; }
+        public string AddressTo { get; set; }
+        public float Amount { get; set; }
 		public string Currency { get; set; }
-		public string PrivateKey { get; set; }
 
 		public override void InitFromParameters(Dictionary<string, string> requestParameters)
 		{
 			base.InitFromParameters(requestParameters);
-			MultisigAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+            AddressFrom = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
+		    AddressTo = requestParameters.Get<string>(CommandsKeys.To);
 			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
 			Currency = requestParameters.Get<string>(CommandsKeys.Asset);
-			//PrivateKey = requestParameters.Get(() => PrivateKey);
-		}
-	}
-
-	public class OrdinaryCashOut : BaseCommandModel
-	{
-		public string MultisigAddress { get; set; }
-		public float Amount { get; set; }
-		public string Currency { get; set; }
-		public string PrivateKey { get; set; }
-		public string PublicWallet { get; set; }
-
-		public override void InitFromParameters(Dictionary<string, string> requestParameters)
-		{
-			base.InitFromParameters(requestParameters);
-
-			MultisigAddress = requestParameters.Get<string>(CommandsKeys.MultisigAddress);
-			Amount = requestParameters.Get<float>(CommandsKeys.Amount);
-			Currency = requestParameters.Get<string>(CommandsKeys.Asset);
-			//PrivateKey = requestParameters.Get(() => PrivateKey);
-			PublicWallet = requestParameters.Get<string>(CommandsKeys.To);
 		}
 	}
 

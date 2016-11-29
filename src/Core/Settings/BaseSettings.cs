@@ -19,7 +19,7 @@ namespace Core.Settings
 		public string LogsConnString { get; set; }
 
 	    public string SharedTransactionConnString { get; set; }
-	    public string SharedConnString { get; set; }
+	    public string SharedStorageConnString { get; set; }
 
         public string DictsConnString { get; set; }
 
